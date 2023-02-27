@@ -1,0 +1,25 @@
+with class_table as (
+  SELECT 
+    ano
+   ,sigla_uf
+   ,id_municipio
+   ,id_escola
+   ,etapa_ensino
+   ,tipo_localizacao
+   ,tipo_categoria_escola_privada
+   ,sinais
+   ,braille
+  FROM `basedosdados.br_inep_censo_escolar.turma` 
+  where sigla_uf = 'SP' and rede = 'privada'
+  )
+
+, enrollment_table as (
+  select 
+    * 
+  from `basedosdados.br_inep_censo_escolar.matricula`
+  where sigla_uf = 'SP'
+)
+
+select 
+  ano
+ ,
